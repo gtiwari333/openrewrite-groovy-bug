@@ -5,5 +5,5 @@ import groovy.transform.ToString
 @ToString
 class Test2 {
 
-    String               name
+    String name
 }

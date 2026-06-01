@@ -7,6 +7,8 @@ enum Status { //enum also throws error
     Complete,
     Failed,
 
+    
+
     static Status[] getStatusNotCompleteOrFailed() {
         values() - [Complete, Failed]
     }

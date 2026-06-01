@@ -5,5 +5,5 @@ import groovy.transform.EqualsAndHashCode
 @EqualsAndHashCode
 class Test {
 
-    String               name
+    String name
 }
