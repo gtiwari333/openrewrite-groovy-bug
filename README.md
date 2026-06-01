@@ -1,10 +1,17 @@
-
+# DEMO project to showcase errors during migrating groovy project using openrewrite
 
 # Can't parse conditional statements from generated code eg: @Slf4j
 
 Github Issue:  TBD
 
 PR: TBD
+
+Issue: 
+
+Getting `Caused by: java.lang.ArrayIndexOutOfBoundsException: Index -2 out of bounds for length 11` error when logging with parameters  eg:   `log.info("Headers ${a}")` and  `log.info("Headers " + a)`
+
+
+Full Error:
 
 ``` 
 There were problems parsing src/main/groovy/com/example/demo/LogTestWithConcatenatedArg.groovy
