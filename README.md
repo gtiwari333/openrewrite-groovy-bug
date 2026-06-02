@@ -1,4 +1,11 @@
-# DEMO project to showcase errors during migrating groovy project using openrewrite
+## DEMO project to showcase errors during migrating groovy project using openrewrite
+
+
+## How to generate error
+
+Run it using following, see the logs
+
+`./gradlew  clean rewriteRun --init-script init.gradle --info`
 
 # Error 3. Can't parse conditional statements from generated code eg: @Slf4j
 
@@ -52,7 +59,7 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index -2 out of bounds for 
         at org.openrewrite.groovy.GroovyParserVisitor.visit(GroovyParserVisitor.java:234)
 ```
 
-# Error 2. @EqualsAndHashCode and other groovy groovy transform fails
+# FIXED: Error 2. @EqualsAndHashCode and other groovy groovy transform fails
 
 GitHub Issue: https://github.com/openrewrite/rewrite/issues/4254
 
@@ -84,7 +91,7 @@ Caused by: java.lang.StringIndexOutOfBoundsException: begin 137, end 137, length
 
 </details> 
 
-### Error 1. Groovy Enum is throwing "Failed to parse" "UnsupportedOperationException: enum fields are not implemented."
+### FIXED: Error 1. Groovy Enum is throwing "Failed to parse" "UnsupportedOperationException: enum fields are not implemented."
 
 Issue: https://github.com/openrewrite/rewrite/issues/4252
 
