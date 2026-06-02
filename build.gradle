@@ -18,6 +18,7 @@ repositories {
 dependencies {
     implementation 'org.apache.groovy:groovy:4.0.21'
     implementation("org.slf4j:slf4j-api:2.0.17")
+    implementation("org.spockframework:spock-core:2.4-groovy-4.0")
 }
 
 tasks.named('test') {
