@@ -1,15 +1,15 @@
 # DEMO project to showcase errors during migrating groovy project using openrewrite
 
-# Can't parse conditional statements from generated code eg: @Slf4j
+# Error 3. Can't parse conditional statements from generated code eg: @Slf4j
 
 Github Issue:  TBD
 
 PR: TBD
 
-Issue: 
+Issue:
 
-Getting `Caused by: java.lang.ArrayIndexOutOfBoundsException: Index -2 out of bounds for length 11` error when logging with parameters  eg:   `log.info("Headers ${a}")` and  `log.info("Headers " + a)`
-
+Getting `Caused by: java.lang.ArrayIndexOutOfBoundsException: Index -2 out of bounds for length 11` error when logging
+with parameters eg:   `log.info("Headers ${a}")` and  `log.info("Headers " + a)`
 
 Full Error:
 
@@ -52,48 +52,18 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index -2 out of bounds for 
         at org.openrewrite.groovy.GroovyParserVisitor.visit(GroovyParserVisitor.java:234)
 ```
 
-
-
-
-# demo to reproduce openrewrite issue with groovy transform and enum
+# Error 2. @EqualsAndHashCode and other groovy groovy transform fails
 
 GitHub Issue: https://github.com/openrewrite/rewrite/issues/4254
 
-PRs: 
- - Groovy Parser supports basic Enum classes #5781 - https://github.com/openrewrite/rewrite/pull/5781
- - Groovy Parser supports constructor method invocations for Enum classes #5802 - https://github.com/openrewrite/rewrite/pull/5802
- 
+PRs:
+
+- Groovy Parser supports basic Enum classes #5781 - https://github.com/openrewrite/rewrite/pull/5781
+- Groovy Parser supports constructor method invocations for Enum classes
+  #5802 - https://github.com/openrewrite/rewrite/pull/5802
 
 <details>
 
-./gradlew  clean rewriteRun --init-script init.gradle
-
-> Task :rewriteRun
-Validating active recipes
-Scanning sources in project :
-Using active styles []
-There were problems parsing some source files, run with --info to see full stack traces
-There were problems parsing src/main/groovy/com/example/demo/Test2.groovy
-There were problems parsing src/main/groovy/com/example/demo/Test.groovy
-There were problems parsing src/main/groovy/com/example/demo/Status.groovy
-All sources parsed, running active recipes: org.openrewrite.groovy.format.AutoFormat
-
-</details>
-
-
-
-### BUG: Groovy Enum is throwing "Failed to parse" "UnsupportedOperationException: enum fields are not implemented."
-
-Issue: https://github.com/openrewrite/rewrite/issues/4252
-
-PR: "Skip parsing groovy generated transform methods" #4848 https://github.com/openrewrite/rewrite/pull/4848
-
-
-<details>
-
-./gradlew  clean rewriteRun --init-script init.gradle --info
-
-Transforms 
 ```
 Error during rewrite run
 org.openrewrite.groovy.GroovyParsingException: Failed to parse src/main/groovy/com/example/demo/Test.groovy, cursor position likely inaccurate.
@@ -112,9 +82,18 @@ Caused by: java.lang.StringIndexOutOfBoundsException: begin 137, end 137, length
         at org.codehaus.groovy.ast.expr.DeclarationExpression.visit(DeclarationExpression.java:89)
 ```
 
- 
+</details> 
 
-ENUM:
+### Error 1. Groovy Enum is throwing "Failed to parse" "UnsupportedOperationException: enum fields are not implemented."
+
+Issue: https://github.com/openrewrite/rewrite/issues/4252
+
+PR: "Skip parsing groovy generated transform methods" #4848 https://github.com/openrewrite/rewrite/pull/4848
+
+
+
+<details> 
+
 ```
 Error during rewrite run
 org.openrewrite.groovy.GroovyParsingException: Failed to parse src/main/groovy/com/example/demo/Status.groovy at cursor position 39. The next 10 characters in the original source are ` //enum al`
